@@ -6,7 +6,7 @@ Intel UHD630 con una tarjeta gráfica Nvidia.
 Todas las configuraciones se realizarán en una** Debian Testing (11.0)**.
 
 Las integraciones o configuraciones que se quieren conseguir son:
- - PCI passthrough de la gráfica Intel a una máquina virtual qemu
+ - [PCI passthrough de la gráfica Intel a una máquina virtual qemu](i915_passthrough)
  - PCI passthrough de la gráfica Nvidia a una máquina virtual qemu
  - Hacer uso de la gráfica Intel virtualizada usando GVT-g
  - Usar ambas gráficas en el mismo escritorio(xinerama)
