@@ -1,21 +1,21 @@
 # Intell full passthrough
-La idea es que la gr√°fica Intel sea pasada a trav√©s de PCI passthrough a la m√°quina virtual, y que act√∫e como si fuese hardware dedicado. Con esto conseguimos hacer uso de la salida HDMI de la gr√°fica a un monitor externo.
+La idea es que la gr·fica Intel sea pasada a travÈs de PCI passthrough a la m√°quina virtual, y que act√∫e como si fuese hardware dedicado. Con esto conseguimos hacer uso de la salida HDMI de la gr√°fica a un monitor externo.
 
 ## M√≥dulos a utilizar
-Los ficheros de m√≥dulos a utilizar son **modules** y **vfio.conf** que ser√° guardado dentro de **/etc/modprobe.d** para especificar configuraciones espec√≠ficas.
+Los ficheros de mÛdulos a utilizar son **/etc/modules** y **/etc/modprobe.d/vfio.conf**  para las configuraciones especÌficas.
 
-Cargando estos m√≥dulos, no tendremos que realizar modificaciones en el arranque del grub ni en el initramfs.
+Cargando estos mÛdulos, no tendremos que realizar modificaciones en el arranque del grub ni en el initramfs.
 
-La idea es llegar a poder cargar/quitar los m√≥dulos en caliente para as√≠ no tener que reiniciar.
+La idea es llegar a poder cargar/quitar los mÛdulos en caliente para asÌ≠ no tener que reiniciar.
 
 ### Estado del hardware
-En Linux el hardware utilizado lo vemos as√≠:
+En Linux el hardware utilizado lo vemos asÌ:
 ```
 # lspci
 00:02.0 Display controller: Intel Corporation CometLake-S GT2 [UHD Graphics 630]
 ```
 
-Y podemos ver m√°s informaci√≥n del mismo a trav√©s de:
+Y podemos ver m·s informaciÛn del mismo a travÈs de:
 ```
 # lspci -vvvs 00:02.0
 
@@ -63,13 +63,13 @@ Y podemos ver m√°s informaci√≥n del mismo a trav√©s de:
 	Kernel modules: i915
 ```
 
-## M√°quina virtual
-El fichero **ubuntu-full-passthrough.sh** contiene una configuraci√≥n b√°sica para arrancar una ISO de ubuntu 20.04 y hacer uso de la gr√°fica intel.
+## M·quina virtual
+El fichero **ubuntu-full-passthrough.sh** contiene una configuraciÛn b·sica para arrancar una ISO de ubuntu 20.04 y hacer uso de la gr·fica intel.
 
-Al principio del script creamos un dispositivo **tap0** que har√° uso de un bridge creado previamente vmbr0 de la tarjeta de red.
+Al principio del script creamos un dispositivo **tap0** que har· uso de un bridge creado previamente vmbr0 de la tarjeta de red.
 
 Lo importante es la parte:
 ```
 -device vfio-pci,host=00:02.0 -nographic -vga none
 ```
-donde se le indica la gr√°fica Intel que se le pasa como pci a la m√°quina virtual
+donde se le indica la gr·fica Intel que se le pasa como pci a la m·quina virtual.
